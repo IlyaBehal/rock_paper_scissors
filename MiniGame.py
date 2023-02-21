@@ -10,20 +10,29 @@ VICTORIES = {
 
 
 def get_user_selection(actions):
+    """
+    user enter his choice
+    """
     choices = [f"{actions[action]}[{action}]" for action in actions]
     choices_str = ", ".join(choices)
-    selection = int(input(f"Enter a choice ({choices_str}): "))
+    selection: int = int(input(f"Enter a choice ({choices_str}): "))
     action = actions[selection]
     return action
 
 
 def get_computer_selection(actions):
+    """
+    return random action as computer choice
+    """
     selection = random.randint(0, len(actions) - 1)
     action = actions[selection]
     return action
 
 
 def get_determine_winner(victories, user_action, computer_action):
+    """
+    return the winner or tie
+    """
     defeats = victories[user_action]
     if user_action == computer_action:
         result = f"Both players selected {user_action}. It's a tie!"
